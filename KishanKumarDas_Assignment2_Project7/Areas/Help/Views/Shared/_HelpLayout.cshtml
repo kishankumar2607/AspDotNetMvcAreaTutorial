@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<header class="mt-3 mb-4">
+    <h1 class="fw-bold">Help Page</h1>
+</header>
+
+<div class="mb-4">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Home" ? "active" : "")"
+               href="@Url.Action("Index", "Home", new { area = "Help" })">Home</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link @(ViewContext.RouteData.Values["controller"]?.ToString() == "Tutorial" ? "active" : "")"
+               href="@Url.Action("Index", "Tutorial", new { area = "Help", id = "Page1" })">Tutorial</a>
+        </li>
+    </ul>
+</div>
+
+@if (IsSectionDefined("Header"))
+{
+    <div class="mb-3">
+        @RenderSection("Header", required: false)
+    </div>
+}
+
+@RenderBody()
